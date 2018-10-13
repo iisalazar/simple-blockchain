@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple blockchain</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/table.css">
+</head>
+<body>
+	<h1>Simple blockchain</h1>
+	<form action="/add_to_blockchain" method="POST">
+		<label for="Data">Input data here</label>
+		<input type="text" name="block-data">
+		<input type="submit" value="Submit">
+	</form>
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th>Block number</th>
+				<th>Timestamp</th>
+				<th>Data</th>
+				<th>Previous Hash</th>
+				<th>Current Hash</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for block in blocks %}
+				<tr>
+					<td>{{ block.index }}</td>
+					<td>{{ block.timestamp }}</td>
+					<td>{{ block.data }}</td>
+					<td>{{ block.previous_hash }}</td>
+					<td>{{ block.hash }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+</body>
+</html>
